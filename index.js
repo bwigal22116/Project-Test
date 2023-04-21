@@ -1,4 +1,5 @@
-router.get('/prox', function(req, res){
-  res.sendFile(path.join(__dirname, 'prox.html'));
-});
-app.use('/prox', router);
+let newWin = window.open("about:blank", "hello", "width=200,height=200");
+
+newWin.document.write(
+  "<script>window.opener.document.body.innerHTML = 'Test'<\/script>"
+);
