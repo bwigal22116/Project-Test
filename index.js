@@ -1,1 +1,1 @@
-window.open(youtube.com, about:blank, width=200,height=100)
+<a href="http://kanishkkunal.com/" target="_blank">Open in a New Window</a>
