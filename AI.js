@@ -1,4 +1,4 @@
-API_KEY = "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"
+API_KEY = "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"
 class AIBlock {
     getInfo() {
         //Metadata for block
