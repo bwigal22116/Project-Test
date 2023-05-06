@@ -1,3 +1,4 @@
+API_KEY = "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"
 class AIBlock {
     getInfo() {
         //Metadata for block
