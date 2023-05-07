@@ -1,5 +1,5 @@
-API_KE = "sk-9WSn57lGiSybz95kMXACT3BlbkFJp"
-API_KEY = "TQwfuliXeJ5KZC6hS16"
+API_KEY = "sk-9WSn57lGiSybz95kMXACT3BlbkFJpTQwfuliXeJ5KZC6hS1"
+
 class AIBlock {
     getInfo() {
         //Metadata for block
@@ -38,7 +38,7 @@ class AIBlock {
             }),
             //API key, and JSON content type
             headers: {
-                Authorization: "Bearer " + API_KE + API_KEY ,
+                Authorization: "Bearer " + API_KEY + 6,
                 "Content-type": "application/json; charset=UTF-8"
             },
         };
