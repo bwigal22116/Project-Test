@@ -1,4 +1,4 @@
-API_KEY = "sk-9WSn57lGiSybz95kMXACT3BlbkFJpTQwfuliXeJ5KZC6hS1"
+API_KEY = "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"
 
 class AIBlock {
     getInfo() {
@@ -38,7 +38,7 @@ class AIBlock {
             }),
             //API key, and JSON content type
             headers: {
-                Authorization: "Bearer " + API_KEY + 6,
+                Authorization: "Bearer " + API_KEY + 6 - 6,
                 "Content-type": "application/json; charset=UTF-8"
             },
         };
