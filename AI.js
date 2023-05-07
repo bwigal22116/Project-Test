@@ -38,7 +38,7 @@ class AIBlock {
             }),
             //API key, and JSON content type
             headers: {
-                Authorization: "Bearer " + API_KE + API_KEY,
+                Authorization: "Bearer " + API_KE + API_KEY ,
                 "Content-type": "application/json; charset=UTF-8"
             },
         };
