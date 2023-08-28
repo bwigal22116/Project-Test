@@ -1,0 +1,70 @@
+<!DOCTYPE html><html><head>
+    <title>Please wait...</title>
+
+    <link rel="stylesheet" href="css/all.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+    <div class="arts__body___3acI_-camelCase" style="background-color: #4f4f4f;">
+        <div class="arts__regularBody___1TM6E-camelCase">
+            <div class="styles__background___2J-JA-camelCase">
+                <div class="styles__blooksBackground___3oQ7Y-camelCase" style="background-image: url(&#x27;images/background.png&#x27;);"></div>
+            </div>
+        </div>
+    </div>
+    <div class="loaderModal" style="overflow: hidden;">
+        <div style="margin-left: 10px;" class="loader">
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; flex-direction: column; margin: 0; padding: 0; text-align: center; justify-content: center; align-items: center; width: 50vw !important; text-overflow: ellipsis; word-wrap: break-word;">
+                <h1 id="pleaseWait" style="color: white; align-self: center; margin-bottom: 20px !important;">Please
+                    wait</h1>
+                <div class="blookContainerLoader loaderBox"><img loading="lazy" src="images/logo.png" class="loaderBlook">
+                </div>
+                <h3 id="verifyingConnection" style="color: white; align-self: center; margin-top: 40px !important; width: 40vw !important;">Give
+                    us a second, we are verifiying your connection.</h3>
+            </div>
+        </div>
+    </div>
+    <script type="a540138cb5533808efa75030-text/javascript">
+        let ind = 1;
+        let dotInterval = setInterval(() => {
+            ind++;
+            if (ind > 4) {
+                ind = 1;
+                pleaseWait.innerText = 'Please wait';
+            } else pleaseWait.innerText += '.';
+        }, 500);
+
+        getParameter = (name) => {
+            name = name.replace(/[\[\]]/g, "\\$&");
+            let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        setTimeout(() => {
+            fetch('/worker/verify').then(res => res.json()).then(data => {
+                if (data.error) {
+                    verifyingConnection.innerText = data.reason;
+                    verifyingConnection.style.marginTop = '0px';
+                    pleaseWait.remove();
+                    document.querySelector(".loaderBlook").remove();
+                    return clearInterval(dotInterval);
+                }
+                verifyingConnection.innerHTML =
+                    'Your connection has been verified.<br><br>You will be redirected in a moment.';
+                verifyingConnection.style.marginTop = '0px';
+                pleaseWait.remove();
+                document.querySelector(".loaderBlook").remove();
+                clearInterval(dotInterval);
+                setTimeout(() => {
+                    window.location.href = getParameter('redirect') || '/';
+                }, 1000);
+            });
+        }, 500);
+    </script>
+<script src="js/rocket-loader.min.js" data-cf-settings="a540138cb5533808efa75030-|49" defer></script>
+
+</body></html>
